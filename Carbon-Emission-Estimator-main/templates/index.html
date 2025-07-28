@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Carbon Emission Estimator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Carbon Emission Estimator</h1>
+        <form action="/predict" method="post">
+            <div class="input-group">
+                <label for="Monthly Grocery Bill">Monthly Grocery Bill</label>
+                <input type="number" step="any" name="Monthly Grocery Bill" placeholder="in ₹" required>
+            </div>
+
+            <div class="input-group">
+                <label for="Vehicle Monthly Distance Km">Vehicle Monthly Distance (Km)</label>
+                <input type="number" step="any" name="Vehicle Monthly Distance Km" placeholder="in Km" required>
+            </div>
+
+            <div class="input-group">
+                <label for="Waste Bag Weekly Count">Waste Bag Weekly Count</label>
+                <input type="number" step="any" name="Waste Bag Weekly Count" required>
+            </div>
+
+            <div class="input-group">
+                <label for="How Long TV PC Daily Hour">TV/PC Daily Usage (Hours)</label>
+                <input type="number" step="any" name="How Long TV PC Daily Hour" placeholder="Hours/day" required>
+            </div>
+
+            <div class="input-group">
+                <label for="How Many New Clothes Monthly">New Clothes Bought Monthly</label>
+                <input type="number" step="any" name="How Many New Clothes Monthly" required>
+            </div>
+
+            <div class="input-group">
+                <label for="How Long Internet Daily Hour">Internet Usage Daily (Hours)</label>
+                <input type="number" step="any" name="How Long Internet Daily Hour" placeholder="Hours/day" required>
+            </div>
+
+            <input type="submit" value="Estimate Emission">
+        </form>
+
+        {% if prediction_text %}
+            <div class="result">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
